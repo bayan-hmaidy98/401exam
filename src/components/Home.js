@@ -15,7 +15,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3030/api').then(res => this.setState({ fruits: res.data.fruits })).catch(err => { alert(err) });
+    axios.get('https://exam-backend401.herokuapp.com/api').then(res => this.setState({ fruits: res.data.fruits })).catch(err => { alert(err) });
   }
 
   addToFav = (index) => { 
@@ -25,7 +25,7 @@ class Home extends React.Component {
       price: this.state.fruits[index].price,
       email: this.props.auth0.user.email
     };
-    axios.post('http://localhost:3030/addFruit', body).then(res => {})
+    axios.post('https://exam-backend401.herokuapp.com/addFruit', body).then(res => {})
   }
 
   render() {

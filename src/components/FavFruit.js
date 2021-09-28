@@ -25,7 +25,7 @@ class FavFruit extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3030/favFruit?email=${this.props.auth0.user.email}`).then(res => this.setState({favFruit: res.data})).catch(err => { alert(err) });
+    axios.get(`https://exam-backend401.herokuapp.com/favFruit?email=${this.props.auth0.user.email}`).then(res => this.setState({favFruit: res.data})).catch(err => { alert(err) });
   }
 
   updateFruit = (event) => { 
@@ -37,7 +37,7 @@ class FavFruit extends React.Component {
       price: event.target.title.price,
     }
 
-    axios.put(`http://localhost:3030/update/${fruitId}`, body).then(res => {
+    axios.put(`https://exam-backend401.herokuapp.com/update/${fruitId}`, body).then(res => {
       const fruitArr = this.state.favFruit.map(f => {
         if(f._id === fruitId) {
           f.title = res.data.title;
@@ -56,7 +56,7 @@ class FavFruit extends React.Component {
   }
 
   deleteFruit = (id) => {
-    axios.delete(`http://localhost:3030/update/${id}`).then((response) => {this.setState({favFruit: response.data})})
+    axios.delete(`https://exam-backend401.herokuapp.com/delete/${id}`).then((response) => {this.setState({favFruit: response.data})})
   }
 
   render() {
